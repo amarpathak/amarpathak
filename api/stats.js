@@ -3,6 +3,7 @@ const AUTH_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImI5NTNkYzQ4LTM
 const revise = new Revise({ auth: AUTH_TOKEN });
 const File = require('File');
 const atob = require('atob');
+const Base64BufferThumbnail = require("base64-buffer-thumbnail-no-cache");
 
 var base64Img = require('base64-img');
 // const onepx = require('../1px')
@@ -31,25 +32,34 @@ var base64Img = require('base64-img');
 //     // return new File([u8arr], filename, {type:mime});
 // }
 var onepx;
-base64Img.img('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAo0lEQVR42u3RAQ0AAAjDMO5fNCCDkG4SmupdZwoQIAICRECACAgQAQECBIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACAgQIEAEBIiAABGQ7w2x48edS3GF7AAAAABJRU5ErkJggg==', 'dest', '1', function(err, filepath) {
-    console.log({filepath})
-    onepx = filepath
+// base64Img.img('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAo0lEQVR42u3RAQ0AAAjDMO5fNCCDkG4SmupdZwoQIAICRECACAgQAQECBIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACAgQIEAEBIiAABGQ7w2x48edS3GF7AAAAABJRU5ErkJggg==', 'dest', '1', function(err, filepath) {
+//     console.log({filepath})
+//     onepx = filepath
 
-});
+// })
+
+Base64BufferThumbnail(
+    "iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAo0lEQVR42u3RAQ0AAAjDMO5fNCCDkG4SmupdZwoQIAICRECACAgQAQECBIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACAgQIEAEBIiAABGQ7w2x48edS3GF7AAAAABJRU5ErkJggg=="
+  ).then(res=>{
+    console.log({res})
+    onepx= res;
+  });
+//   console.log(thumbnail);
+
 //Usage example:
 // var onepx = dataURLtoFile('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=','onepx.png');
 // console.log(file);
 
 // const onepx = urltoFile('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=', 'onepx.png','image/png')
 export default async function  handler(request, response) {
-    const profileNFT = await revise.fetchNFT("35472372-08d2-4fb2-94c9-3dbcf7f2245c")
-    let [meta] = profileNFT.metaData;
-    let viewCount = (parseInt(meta.views)|| 0) + 1
-    console.log({viewCount},parseInt(meta.views))
-    await revise.nft(profileNFT)
-    .setProperty('views',viewCount)
-    .save();
-    
+    // const profileNFT = await revise.fetchNFT("35472372-08d2-4fb2-94c9-3dbcf7f2245c")
+    // let [meta] = profileNFT.metaData;
+    // let viewCount = (parseInt(meta.views)|| 0) + 1
+    // console.log({viewCount},parseInt(meta.views))
+    // await revise.nft(profileNFT)
+    // .setProperty('views',viewCount)
+    // .save();
+
     response.setHeader('Content-Type','image/png')
     return response.send(onepx)
 }
