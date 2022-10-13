@@ -31,7 +31,7 @@ var base64Img = require('base64-img');
 //     // return new File([u8arr], filename, {type:mime});
 // }
 var onepx;
-base64Img.img('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=', 'dest', '1', function(err, filepath) {
+base64Img.img('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw4pVUAAAAo0lEQVR42u3RAQ0AAAjDMO5fNCCDkG4SmupdZwoQIAICRECACAgQAQECBIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACIiAABEQIAICRECACAgQIEAEBIiAABGQ7w2x48edS3GF7AAAAABJRU5ErkJggg==', 'dest', '1', function(err, filepath) {
     console.log({filepath})
     onepx = filepath
 
@@ -49,8 +49,8 @@ export default async function  handler(request, response) {
     await revise.nft(profileNFT)
     .setProperty('views',viewCount)
     .save();
-
-    // response.setHeader('Content-Type','image/png')
-    return response.send(onepx.buffer)
+    
+    response.setHeader('Content-Type','image/png')
+    return response.send(onepx)
 }
   
