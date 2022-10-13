@@ -5,6 +5,8 @@
   "repository": "https://github.com/amarpathak/amarpathak.git",
   "license": "MIT",
   "dependencies": {
+    "File": "^0.10.2",
+    "atob": "^2.1.2",
     "revise-sdk": "^0.1.16"
   }
 }
