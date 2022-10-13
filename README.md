@@ -1,6 +1,13 @@
 ### Hi there 👋 can i change it ??
 
 [! 1px image here](https://revise-testing.fra1.cdn.digitaloceanspaces.com/doggo/neutral.png)
+
+
+
+<p align="center">
+  <img src="https://revise-testing.fra1.cdn.digitaloceanspaces.com/doggo/neutral.png" width="50" title="hover text">
+</p>
+
 <!--
 **amarpathak/amarpathak** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
