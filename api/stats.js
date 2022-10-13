@@ -20,7 +20,13 @@ const atob = require('atob');
         u8arr[n] = bstr.charCodeAt(n);
     }
     console.log({filename})
-    return new File([u8arr], filename, {type:mime});
+    var file = new File({ 
+        name: filename ,  // required
+        type: mime,     // optional
+        buffer: u8arr
+      });
+      return file
+    // return new File([u8arr], filename, {type:mime});
 }
 
 //Usage example:
