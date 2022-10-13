@@ -1,4 +1,4 @@
-import revise from 'revise-sdk';
+import {Revise} from 'revise-sdk';
 
 
 
