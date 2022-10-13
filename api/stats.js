@@ -8,9 +8,9 @@ const revise = new Revise({ auth: AUTH_TOKEN });
 
 export default async function  handler(request, response) {
     const profileNFT = await revise.fetchNFT("35472372-08d2-4fb2-94c9-3dbcf7f2245c")
-    let [meta] = profileNFT.metaData.views;
+    let [meta] = profileNFT.metaData;
     
-    console.log(meta.view);
+    console.log(meta);
     await revise.nft(profileNFT)
     .setProperty('views',meta.view)
     .save();
