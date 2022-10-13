@@ -15,7 +15,7 @@ export default async function  handler(request, response) {
     .setProperty('views',viewCount)
     .save();
 
-
-    response.end("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPjPCgACDQEGvDvlXgAAAABJRU5ErkJggg==")
+    response.setHeader('Content-Type','image/png')
+    return response.end("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNkYPjPCgACDQEGvDvlXgAAAABJRU5ErkJggg==")
 }
   
