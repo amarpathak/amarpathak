@@ -11,7 +11,7 @@ export default async function  handler(request, response) {
     let viewCount = profileNFT.viewCount;
     
     console.log({profileNFT});
-    revise.nft(profileNFT)
+    await revise.nft(profileNFT)
     .setProperty('views',viewCount)
     .save();
 
