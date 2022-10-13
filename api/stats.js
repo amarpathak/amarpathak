@@ -19,7 +19,7 @@ const atob = require('atob');
     while(n--){
         u8arr[n] = bstr.charCodeAt(n);
     }
-    
+    console.log({filename})
     return new File([u8arr], filename, {type:mime});
 }
 
