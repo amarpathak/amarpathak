@@ -4,34 +4,40 @@ const revise = new Revise({ auth: AUTH_TOKEN });
 const File = require('File');
 const atob = require('atob');
 
+var base64Img = require('base64-img');
 // const onepx = require('../1px')
 // const profileNFT = await revise.fetchNFT("4f20e4c8-d0df-4f01-bac5-1d5f65fe3750")
 
  //return a promise that resolves with a File instance
- function dataURLtoFile(dataurl, filename) {
+//  function dataURLtoFile(dataurl, filename) {
  
-    var arr = dataurl.split(','),
-        mime = arr[0].match(/:(.*?);/)[1],
-        bstr = atob(arr[1]), 
-        n = bstr.length, 
-        u8arr = new Uint8Array(n);
+//     var arr = dataurl.split(','),
+//         mime = arr[0].match(/:(.*?);/)[1],
+//         bstr = atob(arr[1]), 
+//         n = bstr.length, 
+//         u8arr = new Uint8Array(n);
         
-    while(n--){
-        u8arr[n] = bstr.charCodeAt(n);
-    }
-    console.log({filename})
-    var file = new File({ 
-        name: filename ,  // required
-        type: mime,     // optional
-        buffer: u8arr
-      });
-      console.log({file})
-      return file
-    // return new File([u8arr], filename, {type:mime});
-}
+//     while(n--){
+//         u8arr[n] = bstr.charCodeAt(n);
+//     }
+//     console.log({filename})
+//     var file = new File({ 
+//         name: filename ,  // required
+//         type: mime,     // optional
+//         buffer: u8arr
+//       });
+//       console.log({file})
+//       return file
+//     // return new File([u8arr], filename, {type:mime});
+// }
+var onepx;
+base64Img.img('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=', 'dest', '1', function(err, filepath) {
+    console.log({filepath})
+    onepx = filepath
 
+});
 //Usage example:
-var onepx = dataURLtoFile('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=','onepx.png');
+// var onepx = dataURLtoFile('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=','onepx.png');
 // console.log(file);
 
 // const onepx = urltoFile('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=', 'onepx.png','image/png')
@@ -45,6 +51,6 @@ export default async function  handler(request, response) {
     .save();
 
     // response.setHeader('Content-Type','image/png')
-    return response.send(onepx)
+    return response.send(onepx.buffer)
 }
   
