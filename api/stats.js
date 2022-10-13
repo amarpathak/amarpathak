@@ -9,7 +9,8 @@ const revise = new Revise({ auth: AUTH_TOKEN });
 export default async function  handler(request, response) {
     const profileNFT = await revise.fetchNFT("35472372-08d2-4fb2-94c9-3dbcf7f2245c")
     let [meta] = profileNFT.metaData;
-    let viewCount = (parseInt(meta.views)|| 0) +1
+    let viewCount = (parseInt(meta.views)|| 0) + 1
+    console.log({viewCount},parseInt(meta.views))
     await revise.nft(profileNFT)
     .setProperty('views',viewCount)
     .save();
