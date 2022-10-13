@@ -23,8 +23,9 @@ const atob = require('atob');
     var file = new File({ 
         name: filename ,  // required
         type: mime,     // optional
-        buffer: [u8arr]
+        buffer: u8arr
       });
+      console.log({file})
       return file
     // return new File([u8arr], filename, {type:mime});
 }
@@ -44,6 +45,6 @@ export default async function  handler(request, response) {
     .save();
 
     // response.setHeader('Content-Type','image/png')
-    return response.end(onepx)
+    return response.send(onepx)
 }
   
