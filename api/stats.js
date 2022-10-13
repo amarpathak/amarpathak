@@ -8,7 +8,7 @@ const revise = new Revise({ auth: AUTH_TOKEN });
 
 export default async function  handler(request, response) {
     const profileNFT = await revise.fetchNFT("35472372-08d2-4fb2-94c9-3dbcf7f2245c")
-    let viewCount = profileNFT.metaData.viewCount;
+    let viewCount = profileNFT.metaData.views;
     
     console.log(profileNFT.metaData);
     await revise.nft(profileNFT)
