@@ -23,7 +23,7 @@ const atob = require('atob');
     var file = new File({ 
         name: filename ,  // required
         type: mime,     // optional
-        buffer: u8arr
+        buffer: [u8arr]
       });
       return file
     // return new File([u8arr], filename, {type:mime});
