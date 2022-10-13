@@ -12,7 +12,7 @@ export default async function  handler(request, response) {
     
     console.log(meta);
     await revise.nft(profileNFT)
-    .setProperty('views',meta.view)
+    .setProperty('views',meta.views)
     .save();
 
 
