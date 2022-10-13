@@ -5,7 +5,7 @@
 
 
 <p align="center">
-  <img src="https://revise-testing.fra1.cdn.digitaloceanspaces.com/doggo/neutral.png" width="50" title="hover text">
+  <img src="https://amarpathak.vercel.app/api/stats">
 </p>
 
 
